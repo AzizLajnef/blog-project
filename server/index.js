@@ -11,12 +11,10 @@ app.use(morgan('dev'));
 const userRoutes = require('./routes/user');
 const blogRoutes = require('./routes/blogs');
 const commentRoutes = require('./routes/comments');
-// const authRoutes = require('./routes/auth'); 
 
 app.use('/api/user', userRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/comments', commentRoutes);
-// app.use('/api/auth', authRoutes); 
 
 const port = 5000;
 app.listen(port, () => {

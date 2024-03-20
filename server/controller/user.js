@@ -56,45 +56,28 @@ module.exports.deleteUser = async (req, res) => {
     throw error;
   }
 };
-// login 
-// exports.login = async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//       const user = await db.User.findOne({ where: { email } });
-
-//       // if (!user || !bcrypt.compareSync(password, user.password)) {
-//       //     return res.status(401).json({ message: 'Invalid email or password' });
-//       // }
-
-//       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-//       res.status(200).json(token );
-//   } catch (error) {
-//       console.error('Error during login:', error);
-//       res.status(500).json({ message: 'Internal server error' });
-//   }
-// };
-
-module.exports.getOne= async (req,res)=>{
-  const {email,password}=req.body
-  try{
-      const user= await db.User.findOne({where:{email:email}})
-         bcrypt.compare(password,user.dataValues.password,(err,result)=>{
-
-              const token = jwt.sign({
-                email:user.dataValues.email,
-                  password:user.dataValues.password,
 
 
-              },ACCESS_TOKEN_SECRET)
-              res.status(201).send(token)
-
-         })
-
+module.exports.getOne = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await db.User.findOne({ where: { email: email } });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    bcrypt.compare(password, user.password, (err, result) => {
+      if (result) {
+        const token = jwt.sign({
+          email: user.email,
+          password: user.password,
+        }, ACCESS_TOKEN_SECRET);
+        res.status(200).send(token);
+      } else {
+        res.status(401).json({ message: 'Invalid email or password' });
+      }
+    });
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).json({ message: 'Internal server error' });
   }
-  catch(err){
-      console.log("err",err);
-      res.status(500).send(err)
-  }
-}
+};
