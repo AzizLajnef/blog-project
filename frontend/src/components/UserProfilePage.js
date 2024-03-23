@@ -8,7 +8,7 @@ const UserProfilePage = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/user/profile')
+    axios.get('http://localhost:5000/api/user/profile')
       .then(response => {
         setUser(response.data);
       })
@@ -16,7 +16,7 @@ const UserProfilePage = () => {
         console.error('Error fetching user profile:', error);
       });
 
-    axios.get('/api/user/blogs')
+    axios.get('http://localhost:5000/api/user/blogs')
       .then(response => {
         setBlogs(response.data);
       })
@@ -26,7 +26,7 @@ const UserProfilePage = () => {
   }, []);
 
   if (!user) {
-    return <div>Loading...</div>;
+    return <div>zven's platform</div>;
   }
 
   return (

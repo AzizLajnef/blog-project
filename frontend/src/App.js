@@ -8,6 +8,7 @@ import BlogDetailsPage from './components/BlogDetailsPage';
 import NewBlogPage from './components/NewBlogPage';
 import CommentFormPage from './components/CommentFormPage';
 import UserRegistrationPage from './components/UserRegistrationPage';
+import SignUpPage from './components/SignUpPage';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/new-blog" element={<NewBlogPage />} />
           <Route path="/new-comment" element={<CommentFormPage />} />
           <Route path="/register" element={<UserRegistrationPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="*" element={<LoginPage />} />
         </Routes>
       </AnimatePresence>

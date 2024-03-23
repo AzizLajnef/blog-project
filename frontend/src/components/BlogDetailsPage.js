@@ -7,7 +7,7 @@ const BlogDetailsPage = (props) => {
 
   useEffect(() => {
     const blogId = props.match.params.id;
-    axios.get(`/api/blogs/${blogId}`)
+    axios.get(`http://localhost:5000/api/blogs/${blogId}`)
       .then(response => {
         setBlog(response.data);
       })
@@ -17,7 +17,7 @@ const BlogDetailsPage = (props) => {
   }, [props.match.params.id]);
 
   if (!blog) {
-    return <div>Loading...</div>;
+    return <div>zven's blogs</div>;
   }
 
   return (

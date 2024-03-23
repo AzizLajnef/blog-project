@@ -8,7 +8,7 @@ const CommentFormPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newComment = { content };
-    axios.post('/api/comments', newComment)
+    axios.post('http://localhost:5000/api/comments', newComment)
       .then(response => {
         console.log('Comment added successfully:', response.data);
         setContent('');

@@ -10,7 +10,7 @@ const UserRegistrationPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newUser = { name, email, phoneNumber };
-    axios.post('/api/user', newUser)
+    axios.post('http://localhost:5000/api/user', newUser)
       .then(response => {
         console.log('User registered successfully:', response.data);
         setName('');

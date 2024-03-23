@@ -9,7 +9,7 @@ const NewBlogPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBlog = { title, content, image };
-    axios.post('/api/blogs', newBlog)
+    axios.post('http://localhost:5000/api/blogs', newBlog)
       .then(response => {
         console.log('Blog created successfully:', response.data);
         setTitle('');
@@ -17,7 +17,7 @@ const NewBlogPage = () => {
         setImage('');
       })
       .catch(error => {
-        console.error('Error creating blog:', error);
+        console.error('Error:', error);
       });
   };
 
