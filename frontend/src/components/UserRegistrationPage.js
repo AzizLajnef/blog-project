@@ -18,7 +18,7 @@ const UserRegistrationPage = () => {
         setPhoneNumber('');
       })
       .catch(error => {
-        console.error('Error registering user:', error);
+        console.error('error:', error);
       });
   };
 

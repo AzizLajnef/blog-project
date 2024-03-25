@@ -8,7 +8,7 @@ const {
   deleteBlog
 } = require('../controller/blogs'); 
 
-router.get('/', getAllBlogs);
+router.get('/getAll', getAllBlogs);
 router.get('/:id', getOneBlog);
 router.post('/', createBlog);
 router.put('/:id', updateBlog);

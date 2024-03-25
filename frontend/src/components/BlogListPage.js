@@ -7,7 +7,7 @@ const BlogListPage = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/blogs')
+    axios.get('http://localhost:5000/api/blogs/getAll')
       .then(response => {
         setBlogs(response.data);
       })

@@ -1,14 +1,13 @@
 const Blog = require('../database/models/blogs'); 
-const {db,sequelize}=require('../database/index')
+const db=require('../database/index')
+console.log(db)
 module.exports.getAllBlogs = async (req, res) => {
-  try {
-    const allBlogs = await Blog.findAll({});
-    res.status(200).send(allBlogs);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
-  }
-};
+try {
+     const blogs = await db.Blog.findAll()
+    res.status(200).send(blogs)
+   }catch(error){
+     throw error
+    }}
 
 module.exports.getOneBlog = async (req, res) => {
   try {
