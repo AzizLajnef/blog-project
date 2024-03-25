@@ -14,6 +14,7 @@ const LoginPage = () => {
       const response = await axios.post('http://localhost:5000/api/user/login', { email, password });
       console.log('Login response:', response);
       localStorage.setItem('token', response.data);
+      console.log(response.data);
       navigate('/blogs');
     } catch (error) {
       console.error('Error logging in:', error);

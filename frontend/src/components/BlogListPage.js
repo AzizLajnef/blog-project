@@ -15,6 +15,7 @@ const BlogListPage = () => {
         console.error('Error fetching blogs:', error);
       });
   }, []);
+  console.log("a",blogs)
 
   return (
     <motion.div

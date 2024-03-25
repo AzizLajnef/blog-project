@@ -2,12 +2,24 @@ const Blog = require('../database/models/blogs');
 const {db,sequelize}=require('../database/index')
 module.exports.getAllBlogs = async (req, res) => {
   try {
-    const allBlogs = await db.Blog.findAll({
-      order: [['createdAt', 'DESC']],
-    });
+    const allBlogs = await Blog.findAll({});
     res.status(200).send(allBlogs);
   } catch (error) {
-    throw error;
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
+module.exports.getOneBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const blog = await Blog.findByPk(id);
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+    res.status(200).json(blog);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 

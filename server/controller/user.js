@@ -72,7 +72,8 @@ module.exports.getOne = async (req, res) => {
           password: user.password,
         }, ACCESS_TOKEN_SECRET);
         res.status(200).send(token);
-      } else {
+      } 
+      else {
         res.status(401).json({ message: 'Invalid email or password' });
       }
     });

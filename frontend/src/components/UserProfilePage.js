@@ -13,7 +13,7 @@ const UserProfilePage = () => {
         setUser(response.data);
       })
       .catch(error => {
-        console.error('Error fetching user profile:', error);
+        console.error('Error:', error);
       });
 
     axios.get('http://localhost:5000/api/user/blogs')
@@ -21,12 +21,12 @@ const UserProfilePage = () => {
         setBlogs(response.data);
       })
       .catch(error => {
-        console.error('Error fetching user blogs:', error);
+        console.error('Error:', error);
       });
   }, []);
 
   if (!user) {
-    return <div>zven's platform</div>;
+    return <div>zven's blogging platform</div>;
   }
 
   return (
